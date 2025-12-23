@@ -625,6 +625,8 @@ code {
     border: 1px solid var(--border-glass);
     backdrop-filter: blur(10px);
     transition: var(--transition);
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .skill-category:hover {
@@ -658,6 +660,7 @@ code {
     font-size: 0.9rem;
     border: 1px solid var(--border-glass);
     transition: var(--transition);
+    opacity: 1 !important;
 }
 
 .skill-tag:hover {
@@ -669,10 +672,15 @@ code {
 /* ========================================
    Projects Section
    ======================================== */
+.projects-section {
+    overflow: visible;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    width: 100%;
 }
 
 .project-card {
@@ -683,6 +691,9 @@ code {
     backdrop-filter: blur(10px);
     transition: var(--transition);
     cursor: pointer;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block;
 }
 
 .project-card:hover {

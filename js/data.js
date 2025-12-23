@@ -248,9 +248,15 @@ function renderTimeline() {
 }
 
 function renderSkills() {
+    console.log('renderSkills() called');
     const skillsContainer = document.getElementById('skills-container');
-    if (!skillsContainer) return;
+    console.log('Skills container element:', skillsContainer);
+    if (!skillsContainer) {
+        console.error('Skills container not found!');
+        return;
+    }
     
+    console.log('Skills data:', portfolioData.skills);
     skillsContainer.innerHTML = Object.entries(portfolioData.skills).map(([category, data]) => `
         <div class="skill-category">
             <h3 class="skill-category-title">
@@ -262,12 +268,24 @@ function renderSkills() {
             </div>
         </div>
     `).join('');
+    console.log('Skills rendered successfully!');
+    
+    // Trigger animation refresh after rendering
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+    }
 }
 
 function renderProjects() {
+    console.log('renderProjects() called');
     const projectsGrid = document.getElementById('projects-grid');
-    if (!projectsGrid) return;
+    console.log('Projects grid element:', projectsGrid);
+    if (!projectsGrid) {
+        console.error('Projects grid not found!');
+        return;
+    }
     
+    console.log('Projects data:', portfolioData.featuredProjects);
     projectsGrid.innerHTML = portfolioData.featuredProjects.map(project => `
         <div class="project-card" data-project-id="${project.id}">
             <div class="project-icon">
@@ -282,6 +300,7 @@ function renderProjects() {
         </div>
     `).join('');
     
+    console.log('Projects HTML rendered, adding click handlers...');
     // Add click handlers for project modals
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
@@ -289,6 +308,12 @@ function renderProjects() {
             showProjectModal(projectId);
         });
     });
+    console.log('Projects rendered successfully!');
+    
+    // Trigger animation refresh after rendering
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+    }
 }
 
 function renderAchievements() {
@@ -402,6 +427,10 @@ function initContactForm() {
 
 // Initialize all data rendering
 function initPortfolioData() {
+    console.log('Initializing portfolio data...');
+    console.log('Skills data:', portfolioData.skills);
+    console.log('Projects data:', portfolioData.featuredProjects);
+    
     renderStats();
     renderTimeline();
     renderSkills();
@@ -409,6 +438,8 @@ function initPortfolioData() {
     renderAchievements();
     initModalHandlers();
     initContactForm();
+    
+    console.log('Portfolio data initialization complete!');
 }
 
 // Run when DOM is ready

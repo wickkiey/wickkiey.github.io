@@ -98,18 +98,23 @@ class AnimationController {
     
     initSkillCardAnimations() {
         // Stagger animation for skill categories
-        gsap.from('.skill-category', {
-            scrollTrigger: {
-                trigger: '#skills',
-                start: 'top 70%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 30,
-            stagger: 0.15,
-            duration: 0.6,
-            ease: 'power2.out'
-        });
+        setTimeout(() => {
+            const skillCategories = document.querySelectorAll('.skill-category');
+            if (skillCategories.length > 0) {
+                gsap.from(skillCategories, {
+                    scrollTrigger: {
+                        trigger: '#skills',
+                        start: 'top 70%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 0,
+                    y: 30,
+                    stagger: 0.15,
+                    duration: 0.6,
+                    ease: 'power2.out'
+                });
+            }
+        }, 100);
         
         // Animate skill tags on hover (handled by CSS) but add entrance animation
         const observer = new IntersectionObserver((entries) => {
@@ -163,18 +168,24 @@ class AnimationController {
     }
     
     initProjectCardAnimations() {
-        gsap.from('.project-card', {
-            scrollTrigger: {
-                trigger: '#projects',
-                start: 'top 70%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 50,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: 'power2.out'
-        });
+        // Use a small delay to ensure DOM is ready
+        setTimeout(() => {
+            const projectCards = document.querySelectorAll('.project-card');
+            if (projectCards.length > 0) {
+                gsap.from(projectCards, {
+                    scrollTrigger: {
+                        trigger: '#projects',
+                        start: 'top 70%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 0,
+                    y: 50,
+                    stagger: 0.15,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            }
+        }, 100);
     }
     
     initParallaxEffect() {
