@@ -16,9 +16,11 @@ const portfolioData = {
     
     stats: [
         { value: '11+', label: 'Years Experience' },
-        { value: '14K+', label: 'Users Served' },
-        { value: '$4.3M', label: 'Revenue Impact' },
-        { value: '90%+', label: 'Conversion Rate' }
+        { value: 'AI Architect', label: 'Role' },
+        { value: 'MLE', label: 'Role' },
+        { value: 'MLOps', label: 'Specialization' },
+        { value: 'Governance', label: 'Focus' },
+        { value: 'Security', label: 'Focus' }
     ],
     
     education: [
@@ -222,7 +224,7 @@ function renderStats() {
     
     statsGrid.innerHTML = portfolioData.stats.map(stat => `
         <div class="stat-card">
-            <span class="stat-value">${stat.value}</span>
+            <span class="stat-value" style="${stat.value.length > 6 ? 'font-size: 1.8rem;' : ''}">${stat.value}</span>
             <span class="stat-label">${stat.label}</span>
         </div>
     `).join('');

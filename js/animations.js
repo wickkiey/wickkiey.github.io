@@ -227,6 +227,12 @@ class AnimationController {
         
         stats.forEach(stat => {
             const target = stat.textContent;
+            
+            // Skip animation for non-numeric values
+            if (!/\d/.test(target)) {
+                return;
+            }
+
             const hasPlus = target.includes('+');
             const hasDollar = target.includes('$');
             const hasPercent = target.includes('%');
@@ -325,17 +331,21 @@ function initStatsAnimation() {
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                gsap.from('.stat-card', {
-                    scale: 0.8,
-                    opacity: 0,
+                const statCards = entry.target.querySelectorAll('.stat-card');
+                gsap.to(statCards, {
+                    scale: 1,
+                    opacity: 1,
                     duration: 0.6,
                     stagger: 0.1,
-                    ease: 'back.out(1.7)'
+                    ease: 'back.out(1.7)',
+                    onComplete: () => {
+                        statCards.forEach(card => card.classList.add('animated'));
+                    }
                 });
                 statsObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1, rootMargin: '50px' });
     
     const statsGrid = document.getElementById('stats-grid');
     if (statsGrid) {
@@ -350,12 +360,18 @@ if (document.readyState === 'loading') {
         animController.animateStats();
         animController.initSmoothScroll();
         animController.initNavbarScroll();
-        initStatsAnimation();
+        // Delay stats animation to ensure DOM is fully rendered
+        setTimeout(() => {
+            initStatsAnimation();
+        }, 100);
     });
 } else {
     const animController = new AnimationController();
     animController.animateStats();
     animController.initSmoothScroll();
     animController.initNavbarScroll();
-    initStatsAnimation();
+    // Delay stats animation to ensure DOM is fully rendered
+    setTimeout(() => {
+        initStatsAnimation();
+    }, 100);
 }
