@@ -102,45 +102,58 @@ class AnimationController {
     }
     
     initSkillCardAnimations() {
-        // Stagger animation for skill categories
-        setTimeout(() => {
+        // Wait for DOM to be ready and skills to be rendered
+        const initAnimation = () => {
             const skillCategories = document.querySelectorAll('.skill-category');
-            if (skillCategories.length > 0) {
-                gsap.from(skillCategories, {
+            if (skillCategories.length === 0) {
+                // Skills not rendered yet, try again
+                setTimeout(initAnimation, 100);
+                return;
+            }
+            
+            // Set initial visibility to ensure elements are visible
+            gsap.set(skillCategories, { opacity: 1, visibility: 'visible' });
+            gsap.set('.skill-tag', { opacity: 1, visibility: 'visible' });
+            
+            // Animate skill categories
+            gsap.from(skillCategories, {
+                scrollTrigger: {
+                    trigger: '#skills',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                opacity: 0,
+                y: 30,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: 'power2.out',
+                clearProps: 'all'
+            });
+            
+            // Animate skill tags with stagger effect
+            const skillTags = document.querySelectorAll('.skill-tag');
+            if (skillTags.length > 0) {
+                gsap.from(skillTags, {
                     scrollTrigger: {
                         trigger: '#skills',
-                        start: 'top 70%',
-                        toggleActions: 'play none none reverse'
+                        start: 'top 80%',
+                        toggleActions: 'play none none none',
+                        once: true
                     },
+                    scale: 0.8,
                     opacity: 0,
-                    y: 30,
-                    stagger: 0.15,
-                    duration: 0.6,
-                    ease: 'power2.out'
+                    duration: 0.3,
+                    stagger: 0.01,
+                    ease: 'back.out(1.7)',
+                    delay: 0.2,
+                    clearProps: 'all'
                 });
             }
-        }, 100);
+        };
         
-        // Animate skill tags on hover (handled by CSS) but add entrance animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const tags = entry.target.querySelectorAll('.skill-tag');
-                    gsap.from(tags, {
-                        scale: 0,
-                        opacity: 0,
-                        duration: 0.3,
-                        stagger: 0.02,
-                        ease: 'back.out(1.7)'
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        document.querySelectorAll('.skill-category').forEach(category => {
-            observer.observe(category);
-        });
+        // Start initialization with a small delay
+        setTimeout(initAnimation, 200);
     }
     
     initTimelineAnimations() {

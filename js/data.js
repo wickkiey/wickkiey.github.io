@@ -272,10 +272,15 @@ function renderSkills() {
     `).join('');
     console.log('Skills rendered successfully!');
     
-    // Trigger animation refresh after rendering
-    if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.refresh();
-    }
+    // Trigger animation refresh after rendering with a slight delay
+    setTimeout(() => {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+            console.log('ScrollTrigger refreshed after skills render');
+        }
+        // Dispatch custom event to notify animations are ready
+        window.dispatchEvent(new CustomEvent('skillsRendered'));
+    }, 50);
 }
 
 function renderProjects() {
