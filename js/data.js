@@ -410,25 +410,85 @@ function initModalHandlers() {
     }
 }
 
-// Contact form handler
+// Contact form handler with Web3Forms integration
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
     
-    form.addEventListener('submit', (e) => {
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const formMessage = document.getElementById('form-message');
+    
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        formMessage.style.display = 'none';
         
-        // Create mailto link
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        window.location.href = `mailto:${portfolioData.personal.email}?subject=${subject}&body=${body}`;
+        // Get form data
+        const formData = new FormData(form);
         
-        // Reset form
-        form.reset();
+        // Check if access key is configured
+        const accessKey = formData.get('access_key');
+        if (!accessKey || accessKey === '82d4c83e-1378-4d1b-ac29-6d7afb479206') {
+            // Fallback to mailto if Web3Forms not configured
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            window.location.href = `mailto:${portfolioData.personal.email}?subject=${subject}&body=${body}`;
+            
+            submitBtn.disabled = false;
+            submitText.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            form.reset();
+            return;
+        }
+        
+        try {
+            // Submit to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Show success message
+                formMessage.style.display = 'block';
+                formMessage.style.background = 'rgba(0, 217, 255, 0.1)';
+                formMessage.style.border = '1px solid var(--accent-primary)';
+                formMessage.style.color = 'var(--accent-primary)';
+                formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.';
+                
+                // Reset form
+                form.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                throw new Error(data.message || 'Submission failed');
+            }
+        } catch (error) {
+            // Show error message
+            formMessage.style.display = 'block';
+            formMessage.style.background = 'rgba(255, 59, 92, 0.1)';
+            formMessage.style.border = '1px solid #ff3b5c';
+            formMessage.style.color = '#ff3b5c';
+            formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or email directly.';
+            
+            console.error('Form submission error:', error);
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.innerHTML = 'Send Message';
+        }
     });
 }
 
