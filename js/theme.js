@@ -13,9 +13,8 @@ class ThemeManager {
             return savedTheme;
         }
         
-        // Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+        // Default to dark mode
+        return 'dark';
     }
     
     init() {

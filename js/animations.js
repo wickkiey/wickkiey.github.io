@@ -6,8 +6,13 @@ class AnimationController {
     
     init() {
         // Register GSAP plugins
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
+        if (typeof gsap !== 'undefined') {
+            if (typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+            }
+            if (typeof ScrollToPlugin !== 'undefined') {
+                gsap.registerPlugin(ScrollToPlugin);
+            }
             
             this.initHeroAnimations();
             this.initSectionAnimations();
