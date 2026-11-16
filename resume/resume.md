@@ -1,6 +1,6 @@
 # Vivek Ananthan M.S
 
-**Azure Certified | AI Architect | Sr. ML & MLOps Engineer | LLM & GenAI Specialist |**
+**Azure Certified | AI Product Architect | AI Products & Enterprise AI Platforms | LLM & GenAI Product Leader |**
 
 📧 vivekananthan_ms@hotmail.com | 📞 +91-8778545803  
 🔗 [GitHub](https://github.com/wickkiey) | [Portfolio](https://wickkiey.github.io) | [LinkedIn](https://www.linkedin.com/in/wickkiey/)  
@@ -10,7 +10,7 @@
 
 ## Professional Summary
 
-AI Architect with 11 years of experience in building scalable ML systems and LLM-based agent workflows. Expertise in full ML lifecycle—training, deployment, tracing, observability, and drift detection—ensuring secure, compliant, and production-grade delivery using modern cloud-native and AI-native architectures.
+AI Product Architect with 12 years of experience taking AI products and enterprise AI platforms from problem discovery to production. I lead architecture for LLM, agentic, and ML products, own the full lifecycle—fine-tuning, deployment, observability, and governance—and ship measurable outcomes across 18 product companies in the Fortive portfolio.
 
 ---
 
@@ -25,6 +25,7 @@ AI Architect with 11 years of experience in building scalable ML systems and LLM
 
 | **Category** | **Tools & Technologies** |
 |-------------|-------------------------|
+| **AI Products & Platforms** | AI Product Architecture, Enterprise AI Platforms, Agent Platforms (MCP, RBAC), Product Discovery, Platform Strategy |
 | **Languages & Scripting** | Python, PySpark, C++, SQL, JavaScript (NextJs, Node.js) |
 | **Machine Learning & AI** | PyTorch, Tensorflow, Transformers, Scikit-learn, Spacy, SHAP, LIME, OpenCV, YOLO |
 | **Generative AI & LLMs** | Prompt Engineering, RAG, Advanced RAG (Hybrid Search, Re-ranking),<br>Function Calling, Tool Calling, Embeddings, LLM Fine-tuning (LoRA / PEFT),<br>Evaluation (LLM-as-a-Judge), Safety & Guardrails |
@@ -36,36 +37,38 @@ AI Architect with 11 years of experience in building scalable ML systems and LLM
 
 ## Experience
 
-### Fortive — *Sr. ML Engineer*
+### Fortive — *R&D Sr. ML Engineer (AI Core Team)*
 **Jul 2023 – Present**
 
-- Architected and **fine-tuned Mistral model (LLM LORA FineTuning, unsloth)** on custom oscilloscope command sets, enabling natural language interaction for device operations and significantly enhancing user productivity.
-- Led the design and development of a GenAI-based multi-agent RAG system with a **Vector DB–powered** knowledge engine for semantic retrieval of structured and unstructured data, built using **Azure OpenAI and CrewAI**. Currently serving 14000+ employees for Kaizen.
-- Architected and deployed **YOLO**-based medical instrument detection models to edge environments, enabling real-time inference and enhanced device intelligence.
-- Developed a scalable, enterprise-grade data pipeline module for **knowledge engine** generation with optimized data parsing and **semantic chunking**, orchestrated via Container App Jobs, supporting multiple projects across organizations.
-- Developed an AI-powered document comparison and analysis platform for multi-format product documentation (PDF, Excel, etc.), leveraging **Vector Databases** and **autonomous agents to map patent claims to products**, improving pricing strategy and marketing effectiveness which generated 4.3M in Quarterly revenue.
+- R&D Sr. ML Engineer on the **AI Core Team**, owning AI product architecture and features across **18 Fortive product companies**.
+- **Fine-tuned an LLM via Unsloth (LoRA)** on a proprietary oscilloscope command set, **exceeding baseline LLM performance** and improving **product stability**.
+- Architected an **Enterprise Agent Platform** for shared tools and **MCP servers with RBACs**, giving product teams secure, reusable agentic building blocks.
+- Built a **background research multi-agent system** to map patents to products, scaling output from **5 to 60 per month with human validation**, directly tied to **pricing and revenue**.
+- Managed architecture for multiple **AI product features** while mentoring teams on production-grade LLM and agent patterns.
 
-### Happiest Minds Technologies — *Lead Data Scientist*
+### Happiest Minds Technologies — *Lead Data Scientist – Vision AI Unit*
 **Jan 2019 – Jul 2023**
 
-- Architected and deployed **multiple internal AI intellectual properties (IPs)** with end-to-end ML lifecycle ownership, while leading the internal ML team across all **computer-vision initiatives**, accelerating solution delivery and standardization across projects.
-- Designed and productionized **loan default risk and user conversion models for a banking client**, reducing loan default rates from 8.8% to 3.85% and lowering marketing expenditure, with **continuous ML pipelines, model versioning, and drift detection** implemented using **MLflow and DVC**.
-- Developed **automated product image validation and demand forecasting systems for an OEM client**, leveraging **U-Net and MobileNetV2** for image segmentation and **PySpark on Databricks** for forecasting, reducing manual validation effort and improving throughput and shelf-time optimization, with **Azure-based MLOps and drift monitoring**.
-- Built an **image-based intelligent search engine for an energy client**, combining **object detection, OCR, and vector similarity search** using **ResNet, EasyOCR, OpenCV**, and embeddings, enabling fast and accurate discovery of visual content at scale.
+- **Led the Vision AI unit** and delivered **7+ AI projects** from concept to production.
+- Built an internal **real-time voice-based interview product**, saving **100+ hours per month** for internal employees.
+- Built internal **AI accelerators** reused across multiple projects, standardizing delivery and shortening time to production.
+- Designed and productionized **loan default risk models for a banking client**, reducing loan default rates from 8.8% to 3.85%, with **continuous ML pipelines, model versioning, and drift detection** implemented using **MLflow and DVC**.
+- Built an **image-based intelligent search engine**, combining **object detection, OCR, and vector similarity search** using **ResNet, EasyOCR, OpenCV**, and embeddings.
 
 ### Aagnas Software Labs — *Product Solutions Engineer*
 **Feb 2016 – Dec 2018**
 
-- Designed and deployed an **AR-based virtual try-on system** for apparel using **VC++ and Microsoft Kinect**, adopted by retailers like **PN-RAO and Raymonds**, improving in-store conversion by **>90%**.
-- Built **3D hand-gesture recognition models** using **depth camera feeds (Kinect / RealSense)**, with a custom **PyTorch model** integrated into the production pipeline.
-- Developed a **3D jewelry visualization product (Jwelme)** using **Kinect depth sensing and Python-based 3D rendering**, enabling interactive product exploration.
-- Implemented **recommendation systems for retail clients** using **user-based and item-based collaborative filtering**, enhancing product discovery and personalization.
+- **Single-handedly built and shipped an AR-based virtual try-on product in 3 months** and deployed it to production ([watch the demo](https://www.youtube.com/watch?v=Hq7hgClsHJ4)).
+- Product adopted by retailers like **PN-RAO and Raymonds**, improving in-store conversion by **>90%**.
+- Guided a team of data scientists to extend the product into **3D jewelry and recommendation engines**.
+- Converted the recommendation engine into **reusable modules** adopted across **partner startups**.
 
 ### Cognizant Technology Solutions — *Programmer Analyst*
 **Jun 2014 – Feb 2016**
 
+- Built **anomaly detection models for key insurance operations** at a primary US insurance company, deployed through **external audits** and **added to their product list**.
 - Implemented **custom data validation and anomaly detection frameworks** for insurance datasets, improving data quality and early issue detection.
-- Built **NLP-based sentiment analysis models** to extract insights from customer feedback, complaints, and review comments. Build web dashboard with business metrics.
+- Built **NLP-based sentiment analysis models** for customer feedback and complaints, with a web dashboard surfacing business metrics.
 
 ---
 

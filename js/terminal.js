@@ -33,8 +33,11 @@ class Terminal {
     }
     
     init() {
+        this.isMinimized = true;
+        if (this.terminal) {
+            this.terminal.classList.add('minimized');
+        }
         this.setupEventListeners();
-        this.focusInput();
     }
     
     setupEventListeners() {
@@ -288,7 +291,7 @@ class Terminal {
     
     cmdWhoami() {
         this.printLine('visitor@portfolio', 'terminal-text');
-        this.printLine('You are viewing Vivek Ananthan\'s AI Architect Portfolio', 'terminal-info');
+        this.printLine('You are viewing Vivek Ananthan\'s AI Product Portfolio', 'terminal-info');
         this.printLine(`Visitor ID: ${this.generateVisitorId()}`, 'terminal-text');
     }
     

@@ -2,7 +2,7 @@
 const portfolioData = {
     personal: {
         name: 'Vivek Ananthan M.S',
-        title: 'AI Architect | Sr. ML & MLOps Engineer | LLM & GenAI Specialist',
+        title: 'AI Product Architect | AI Products & Enterprise AI Platforms',
         email: 'vivekananthan_ms@hotmail.com',
         phone: '+91-8778545803',
         github: 'https://github.com/wickkiey',
@@ -12,15 +12,15 @@ const portfolioData = {
         location: 'India'
     },
     
-    summary: 'AI Architect with 11 years of experience in building scalable ML systems and LLM-based agent workflows. Expertise in full ML lifecycle—training, deployment, tracing, observability, and drift detection—ensuring secure, compliant, and production-grade delivery using modern cloud-native and AI-native architectures.',
+    summary: 'AI Product Architect with 12 years of experience taking AI products and enterprise AI platforms from problem discovery to production. I lead architecture for LLM, agentic, and ML products, own the full lifecycle—fine-tuning, deployment, observability, and governance—and ship measurable outcomes across 18 product companies in the Fortive portfolio.',
     
     stats: [
-        { value: '11+', label: 'Years Experience' },
-        { value: 'AI Architect', label: 'Role' },
-        { value: 'MLE', label: 'Role' },
-        { value: 'MLOps', label: 'Specialization' },
-        { value: 'Governance', label: 'Focus' },
-        { value: 'Security', label: 'Focus' }
+        { value: '12+', label: 'Years Experience' },
+        { value: 'AI Product', label: 'Architect' },
+        { value: '7+', label: 'AI Products Shipped' },
+        { value: '$4.3M', label: 'Quarterly Revenue' },
+        { value: '14K+', label: 'Users Served' },
+        { value: '18', label: 'Product Companies' }
     ],
     
     education: [
@@ -31,27 +31,28 @@ const portfolioData = {
     experience: [
         {
             company: 'Fortive',
-            role: 'Sr. ML Engineer',
+            role: 'R&D Sr. ML Engineer (AI Core Team)',
             period: 'Jul 2023 – Present',
             location: 'Remote',
             achievements: [
-                'Architected and fine-tuned Mistral model (LLM LoRA Fine-tuning, unsloth) on custom oscilloscope command sets, enabling natural language interaction for device operations',
-                'Led design and development of GenAI-based multi-agent RAG system with Vector DB-powered knowledge engine using Azure OpenAI and CrewAI, serving 14,000+ employees',
-                'Architected and deployed YOLO-based medical instrument detection models to edge environments for real-time inference',
-                'Developed scalable data pipeline module for knowledge engine generation with optimized semantic chunking via Container App Jobs',
-                'Built AI-powered document comparison platform leveraging Vector Databases and autonomous agents, generating $4.3M quarterly revenue'
+                'R&D Sr. ML Engineer on the AI Core Team, owning AI product architecture and features across 18 Fortive product companies',
+                'Fine-tuned an LLM via Unsloth (LoRA) on a proprietary oscilloscope command set, exceeding baseline LLM performance and improving product stability',
+                'Architected an Enterprise Agent Platform for shared tools and MCP servers with RBACs, giving product teams secure, reusable agentic building blocks',
+                'Built a background research multi-agent system that maps patents to products, scaling output from 5 to 60 per month with human validation directly tied to pricing and revenue',
+                'Managed architecture for multiple AI product features while mentoring teams on production-grade LLM and agent patterns'
             ]
         },
         {
             company: 'Happiest Minds Technologies',
-            role: 'Lead Data Scientist',
+            role: 'Lead Data Scientist – Vision AI Unit',
             period: 'Jan 2019 – Jul 2023',
             location: 'Bangalore, India',
             achievements: [
-                'Architected and deployed multiple internal AI intellectual properties with end-to-end ML lifecycle ownership',
+                'Led the Vision AI unit and delivered 7+ AI projects from concept to production',
+                'Built an internal real-time voice-based interview product, saving 100+ hours per month for internal employees',
+                'Built internal AI accelerators reused across multiple projects, standardizing delivery and shortening time to production',
                 'Designed loan default risk models reducing default rates from 8.8% to 3.85% with MLflow and DVC for versioning and drift detection',
-                'Developed automated product image validation using U-Net and MobileNetV2, and demand forecasting with PySpark on Databricks',
-                'Built image-based intelligent search engine combining object detection, OCR (EasyOCR), and vector similarity search'
+                'Built image-based intelligent search combining object detection, OCR (EasyOCR), and vector similarity search'
             ]
         },
         {
@@ -60,10 +61,10 @@ const portfolioData = {
             period: 'Feb 2016 – Dec 2018',
             location: 'Chennai, India',
             achievements: [
-                'Designed AR-based virtual try-on system for apparel using VC++ and Microsoft Kinect, adopted by PN-RAO and Raymonds, improving conversion by >90%',
-                'Built 3D hand-gesture recognition models using depth camera feeds with custom PyTorch model',
-                'Developed 3D jewelry visualization product (Jwelme) using Kinect depth sensing and Python-based 3D rendering',
-                'Implemented recommendation systems using collaborative filtering for retail clients'
+                'Single-handedly built and shipped an AR-based virtual try-on product in 3 months and deployed it to production — <a href="https://www.youtube.com/watch?v=Hq7hgClsHJ4" target="_blank" rel="noopener">watch the demo</a>',
+                'Product adopted by retailers like PN-RAO and Raymonds, improving in-store conversion by >90%',
+                'Guided a team of data scientists to extend the product into 3D jewelry and recommendation engines',
+                'Converted the recommendation engine into reusable modules adopted across partner startups'
             ]
         },
         {
@@ -72,9 +73,9 @@ const portfolioData = {
             period: 'Jun 2014 – Feb 2016',
             location: 'Chennai, India',
             achievements: [
+                'Built anomaly detection models for key insurance operations at a primary US insurance company, deployed through external audits and added to their product list',
                 'Implemented custom data validation and anomaly detection frameworks for insurance datasets',
-                'Built NLP-based sentiment analysis models for customer feedback and complaints',
-                'Created web dashboard with business metrics for data insights'
+                'Built NLP-based sentiment analysis models for customer feedback and complaints, with a web dashboard surfacing business metrics'
             ]
         }
     ],
@@ -109,84 +110,85 @@ const portfolioData = {
     featuredProjects: [
         {
             id: 'mistral-finetuning',
-            title: 'Mistral LLM Fine-tuning',
-            description: 'Fine-tuned Mistral model using LoRA/PEFT on custom oscilloscope command sets for natural language device operations',
+            title: 'Oscilloscope LLM Fine-tuning',
+            description: 'Fine-tuned an LLM via Unsloth (LoRA) on a proprietary oscilloscope command set, beating baseline LLMs on device commands',
             icon: 'fa-brain',
             tech: ['PyTorch', 'Unsloth', 'LoRA', 'PEFT', 'LLM Fine-tuning', 'Python'],
-            impact: 'Enabled natural language interaction with oscilloscopes, significantly enhancing user productivity across engineering teams',
+            impact: 'Exceeded baseline LLM performance on device commands and improved product stability for a Fortive operating company',
             details: {
-                challenge: 'Engineering teams needed an intuitive way to interact with complex oscilloscope commands without memorizing technical syntax',
-                solution: 'Implemented LoRA-based parameter-efficient fine-tuning on Mistral model using unsloth framework, trained on domain-specific command datasets',
-                results: ['Natural language command interpretation', 'Reduced learning curve for new engineers', 'Improved operational efficiency', 'Seamless integration with existing hardware'],
-                technologies: ['PyTorch', 'Unsloth', 'LoRA/PEFT', 'Hugging Face Transformers', 'Custom tokenization', 'Quantization']
+                challenge: 'Engineers needed natural language control of complex oscilloscope command sets, and off-the-shelf LLMs were not accurate or stable enough for a product',
+                solution: 'Built a domain-specific fine-tuning pipeline with Unsloth and LoRA on proprietary command data, evaluated against baseline LLMs, and shipped as a product feature',
+                results: ['Exceeded baseline LLM accuracy', 'Improved product stability', 'Natural language command interpretation', 'Reduced learning curve for engineers', 'Production-grade reliability'],
+                technologies: ['PyTorch', 'Unsloth', 'LoRA/PEFT', 'Hugging Face Transformers', 'Custom tokenization', 'Evaluation Harness']
             }
         },
         {
-            id: 'multi-agent-rag',
-            title: 'Multi-Agent RAG System',
-            description: 'Enterprise GenAI platform with Vector DB-powered knowledge engine for semantic retrieval, serving 14,000+ employees',
+            id: 'enterprise-agent-platform',
+            title: 'Enterprise Agent Platform',
+            description: 'Shared tools and MCP servers with RBACs, giving product teams secure, reusable agentic building blocks',
             icon: 'fa-network-wired',
-            tech: ['Azure OpenAI', 'CrewAI', 'Vector DB', 'RAG', 'Multi-Agent', 'Python'],
-            impact: 'Currently serving 14,000+ employees for Kaizen initiatives, enabling rapid knowledge discovery and decision-making',
+            tech: ['MCP', 'Agentic Systems', 'RBAC', 'Tool Calling', 'Azure', 'Python'],
+            impact: 'Standardized agentic capabilities across 18 Fortive product companies with secure, role-based access control',
             details: {
-                challenge: 'Organization needed intelligent knowledge retrieval system across structured and unstructured data sources at enterprise scale',
-                solution: 'Architected multi-agent RAG system using CrewAI for orchestration, Azure OpenAI for LLM capabilities, and vector databases for semantic search',
-                results: ['14K+ active users', 'Sub-second query responses', 'Multi-source data integration', 'Autonomous agent reasoning', 'Context-aware responses'],
-                technologies: ['Azure OpenAI', 'CrewAI', 'Vector Databases (Pinecone/Weaviate)', 'LangChain', 'Semantic Search', 'Agent Orchestration', 'Azure Container Apps']
+                challenge: 'Each product company was rebuilding agent tooling, with no shared security model or reusable integrations',
+                solution: 'Architected an enterprise agent platform exposing shared tools and MCP servers behind role-based access controls, with a common integration and governance layer',
+                results: ['Reusable agent tooling across 18 product companies', 'RBAC-secured shared tools and MCP servers', 'Faster AI feature delivery', 'Consistent security and governance', 'Reduced duplicate engineering'],
+                technologies: ['MCP Servers', 'Model Context Protocol', 'RBAC', 'Tool Calling', 'Agent Orchestration', 'Azure Container Apps', 'Python']
             }
         },
         {
-            id: 'yolo-edge-deployment',
-            title: 'YOLO Edge Deployment',
-            description: 'Real-time medical instrument detection deployed to edge devices for enhanced device intelligence',
-            icon: 'fa-microchip',
-            tech: ['YOLO', 'Edge AI', 'TensorRT', 'OpenCV', 'Model Optimization', 'Python'],
-            impact: 'Enabled real-time inference on edge devices, improving medical workflow efficiency and device autonomy',
-            details: {
-                challenge: 'Medical devices required real-time object detection capabilities without cloud dependency, with strict latency and power constraints',
-                solution: 'Optimized YOLO models for edge deployment using quantization and pruning, deployed via TensorRT for maximum performance',
-                results: ['<50ms inference latency', 'Edge-native processing', 'No cloud dependency', '95%+ detection accuracy', 'Low power consumption'],
-                technologies: ['YOLOv8', 'TensorRT', 'ONNX', 'Model Quantization', 'Pruning', 'OpenCV', 'Edge Computing', 'Embedded Systems']
-            }
-        },
-        {
-            id: 'ai-document-analysis',
-            title: 'AI Document Analysis Platform',
-            description: 'Multi-format document comparison using Vector Databases and autonomous agents for patent-to-product mapping',
+            id: 'patent-product-agent',
+            title: 'Patent-to-Product Research Multi-Agent',
+            description: 'Background research multi-agent that maps patents to products with human validation in the loop',
             icon: 'fa-file-contract',
-            tech: ['Vector DB', 'Autonomous Agents', 'NLP', 'PDF Processing', 'Python'],
-            impact: 'Generated $4.3M in quarterly revenue through improved pricing strategy and marketing effectiveness',
+            tech: ['Multi-Agent', 'Vector DB', 'Autonomous Agents', 'NLP', 'Python'],
+            impact: 'Scaled patent-to-product mappings from 5 to 60 per month, directly informing pricing and revenue decisions',
             details: {
-                challenge: 'Complex document comparison across multiple formats (PDF, Excel) needed for patent claim analysis and product mapping',
-                solution: 'Built autonomous agent system leveraging vector databases for semantic document comparison and intelligent claim-to-product mapping',
-                results: ['$4.3M quarterly revenue impact', 'Automated patent analysis', 'Multi-format support', 'Intelligent claim mapping', 'Strategic pricing insights'],
-                technologies: ['Vector Databases', 'Autonomous Agents', 'Document Parsing', 'Semantic Chunking', 'NLP', 'Azure Container Apps', 'Multi-modal Processing']
+                challenge: 'Manual patent-to-product mapping was slow and capped at a handful of mappings per month, limiting pricing and marketing decisions',
+                solution: 'Built a background research multi-agent system leveraging vector databases and autonomous agents, with human validation built into the workflow',
+                results: ['5 → 60 mappings per month', 'Human validation in the loop', 'Directly mapped to pricing and revenue', 'Automated patent analysis', 'Multi-format document support'],
+                technologies: ['Vector Databases', 'Autonomous Agents', 'Multi-Agent Orchestration', 'Document Parsing', 'Semantic Chunking', 'Azure Container Apps']
+            }
+        },
+        {
+            id: 'voice-interview-product',
+            title: 'Voice-Based Interview Product',
+            description: 'Internal real-time voice product for taking interviews, built and shipped for internal hiring teams',
+            icon: 'fa-microphone',
+            tech: ['Speech AI', 'Real-time Voice', 'LLM', 'Python', 'Azure'],
+            impact: 'Saved 100+ hours per month for internal employees and standardized the interview process',
+            details: {
+                challenge: 'Internal teams were spending significant time on repetitive screening interviews with inconsistent coverage',
+                solution: 'Built a real-time voice-based interview product that conducts structured interviews and captures responses for review',
+                results: ['100+ hours saved per month', 'Real-time voice interaction', 'Consistent interview coverage', 'Internal product adopted by employees', 'Reduced manual screening effort'],
+                technologies: ['Speech-to-Text', 'Text-to-Speech', 'Real-time Streaming', 'LLM Evaluation', 'Azure', 'Python']
             }
         },
         {
             id: 'ar-virtual-tryon',
-            title: 'AR Virtual Try-On System',
-            description: 'Augmented reality system for apparel using Microsoft Kinect, adopted by major retailers',
+            title: 'AR Virtual Try-On Product',
+            description: 'AR apparel try-on product single-handedly built and shipped in 3 months, deployed to production',
             icon: 'fa-tshirt',
             tech: ['AR', 'VC++', 'Microsoft Kinect', 'Computer Vision', '3D Rendering'],
             impact: 'Improved in-store conversion by >90% for retailers like PN-RAO and Raymonds',
+            link: 'https://www.youtube.com/watch?v=Hq7hgClsHJ4',
             details: {
-                challenge: 'Retailers needed immersive try-on experience to reduce returns and improve customer engagement',
-                solution: 'Developed AR system using Kinect depth sensing for body tracking and real-time clothing overlay with realistic physics simulation',
-                results: ['>90% conversion improvement', 'Reduced return rates', 'Enhanced customer engagement', 'Adopted by major retailers', 'Real-time rendering'],
-                technologies: ['Microsoft Kinect', 'VC++', 'Depth Sensing', '3D Body Tracking', 'AR Overlay', 'Real-time Rendering', 'Physics Simulation']
+                challenge: 'Retailers needed an immersive try-on experience to reduce returns and improve customer engagement',
+                solution: 'Single-handedly designed and built the AR try-on product in 3 months using Kinect depth sensing for body tracking and real-time clothing overlay, then deployed it to production',
+                results: ['Shipped in 3 months, solo', '>90% conversion improvement', 'Deployed to production', 'Adopted by major retailers', 'Reduced return rates'],
+                technologies: ['Microsoft Kinect', 'VC++', 'Depth Sensing', '3D Body Tracking', 'AR Overlay', 'Real-time Rendering']
             }
         },
         {
             id: 'loan-default-prediction',
             title: 'Loan Default Risk Model',
-            description: 'Production ML system with continuous pipelines, versioning, and drift detection for banking client',
+            description: 'Production ML product with continuous pipelines, versioning, and drift detection for a banking client',
             icon: 'fa-chart-line',
             tech: ['MLflow', 'DVC', 'Scikit-learn', 'Azure', 'MLOps', 'Python'],
             impact: 'Reduced loan default rates from 8.8% to 3.85%, lowering marketing expenditure significantly',
             details: {
-                challenge: 'Banking client faced high default rates and needed production-grade ML system with monitoring and versioning',
-                solution: 'Built end-to-end MLOps pipeline with continuous training, model versioning, and drift detection using MLflow and DVC',
+                challenge: 'Banking client faced high default rates and needed a production-grade ML product with monitoring and versioning',
+                solution: 'Built an end-to-end MLOps pipeline with continuous training, model versioning, and drift detection using MLflow and DVC',
                 results: ['Default rate: 8.8% → 3.85%', 'Automated retraining', 'Drift detection', 'Model versioning', 'Reduced marketing costs'],
                 technologies: ['MLflow', 'DVC', 'Scikit-learn', 'Azure ML', 'Model Monitoring', 'Drift Detection', 'CI/CD for ML', 'Feature Engineering']
             }
@@ -207,13 +209,13 @@ const portfolioData = {
     ],
     
     typedStrings: [
-        'AI Architect',
-        'LLM & GenAI Specialist',
-        'Multi-Agent Systems Expert',
-        'MLOps Engineer',
-        'Building Intelligent Systems',
+        'AI Product Architect',
+        'AI Products & Enterprise AI Platforms',
+        'LLM & GenAI Product Leader',
+        'Multi-Agent Systems',
         'Fine-tuning Large Language Models',
-        'Designing RAG Architectures'
+        'Shipping AI Products from 0 to 1',
+        'Enterprise AI Platforms'
     ]
 };
 
@@ -304,6 +306,7 @@ function renderProjects() {
                 ${project.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
             </div>
             <p class="project-impact"><strong>Impact:</strong> ${project.impact}</p>
+            ${project.link ? `<p class="project-video-hint"><i class="fab fa-youtube"></i> Click to watch the demo</p>` : ''}
         </div>
     `).join('');
     
@@ -338,6 +341,12 @@ function renderAchievements() {
             <li><i class="fas ${cert.icon}"></i> ${cert.name} - ${cert.issuer}</li>
         `).join('');
     }
+}
+
+function getYouTubeEmbedId(url) {
+    if (!url) return null;
+    const match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    return match ? match[1] : null;
 }
 
 function showProjectModal(projectId) {
@@ -376,6 +385,21 @@ function showProjectModal(projectId) {
                 </ul>
             </div>
             
+            ${project.link ? `
+            <div style="margin-bottom: 2rem;">
+                ${getYouTubeEmbedId(project.link) ? `
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Demo</h3>
+                <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);">
+                    <iframe src="https://www.youtube.com/embed/${getYouTubeEmbedId(project.link)}" title="${project.title} demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+                </div>
+                ` : `
+                <a href="${project.link}" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <i class="fab fa-youtube"></i> Watch Demo
+                </a>
+                `}
+            </div>
+            ` : ''}
+            
             <div>
                 <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Technologies Used</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
@@ -394,17 +418,21 @@ function showProjectModal(projectId) {
 function initModalHandlers() {
     const modal = document.getElementById('project-modal');
     const closeBtn = document.querySelector('.modal-close');
+    const modalBody = document.getElementById('modal-body');
+    
+    const closeModal = () => {
+        modal.classList.remove('active');
+        if (modalBody) modalBody.innerHTML = '';
+    };
     
     if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        closeBtn.addEventListener('click', closeModal);
     }
     
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.remove('active');
+                closeModal();
             }
         });
     }
