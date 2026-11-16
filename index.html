@@ -43,8 +43,9 @@
                 <li><a href="#hero" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -138,16 +139,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section section">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container" id="skills-container">
-                <!-- Skill categories will be populated by JS -->
-            </div>
-        </div>
-    </section>
-
     <!-- Projects Section -->
     <section id="projects" class="projects-section section">
         <div class="container">
@@ -175,6 +166,16 @@
                         <!-- Certifications will be populated by JS -->
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container" id="skills-container">
+                <!-- Skill categories will be populated by JS -->
             </div>
         </div>
     </section>
@@ -246,7 +247,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Vivek Ananthan M.S. Built with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
+            <p>&copy; 2026 Vivek Ananthan M.S. Built with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
             <p class="footer-hint">Psst... Try typing <code>help</code> in the terminal below 👇</p>
         </div>
     </footer>
@@ -259,9 +260,6 @@
                 <span>vivek@ai-product:~$</span>
             </div>
             <div class="terminal-controls">
-                <button id="terminal-expand" class="terminal-btn" aria-label="Expand">
-                    <i class="fas fa-expand"></i>
-                </button>
                 <button id="terminal-minimize" class="terminal-btn" aria-label="Minimize">
                     <i class="fas fa-minus"></i>
                 </button>
@@ -278,9 +276,12 @@
                 <span class="terminal-text">Try <span class="terminal-highlight">matrix</span> or <span class="terminal-highlight">hack</span> for some fun! 🚀</span>
             </div>
         </div>
-        <div class="terminal-input-container">
+        <div class="terminal-input-container" id="terminal-input-container">
             <span class="terminal-prompt">visitor@portfolio:~$</span>
-            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type 'help' for commands...">
+            <div class="terminal-input-wrap">
+                <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" placeholder=" ">
+                <span class="terminal-cursor" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 

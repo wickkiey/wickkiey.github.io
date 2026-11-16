@@ -15,12 +15,12 @@ const portfolioData = {
     summary: 'AI Product Architect with 12 years of experience taking AI products and enterprise AI platforms from problem discovery to production. I lead architecture for LLM, agentic, and ML products, own the full lifecycle—fine-tuning, deployment, observability, and governance—and ship measurable outcomes across 18 product companies in the Fortive portfolio.',
     
     stats: [
-        { value: '12+', label: 'Years Experience' },
-        { value: 'AI Product', label: 'Architect' },
+        { value: '12+', label: 'Years of Experience' },
         { value: '7+', label: 'AI Products Shipped' },
-        { value: '$4.3M', label: 'Quarterly Revenue' },
-        { value: '14K+', label: 'Users Served' },
-        { value: '18', label: 'Product Companies' }
+        { value: '5+', label: 'AI Platforms Delivered' },
+        { value: '18K+', label: 'Users Served by AI Agents' },
+        { value: 'ML R&D', label: 'Research & Development' },
+        { value: '3', label: 'Hackathon Wins' }
     ],
     
     education: [
@@ -226,7 +226,7 @@ function renderStats() {
     
     statsGrid.innerHTML = portfolioData.stats.map(stat => `
         <div class="stat-card">
-            <span class="stat-value" style="${stat.value.length > 6 ? 'font-size: 1.8rem;' : ''}">${stat.value}</span>
+            <span class="stat-value">${stat.value}</span>
             <span class="stat-label">${stat.label}</span>
         </div>
     `).join('');

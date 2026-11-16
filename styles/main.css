@@ -107,14 +107,18 @@ code {
    Layout & Containers
    ======================================== */
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 .section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     position: relative;
+}
+
+.about-section {
+    padding-top: 2rem;
 }
 
 .section-title {
@@ -234,20 +238,18 @@ code {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 110px 0 2.5rem;
+    padding: 100px 0 1rem;
 }
 
 #particles-js {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
-    max-width: 900px;
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.28;
+    opacity: 0.3;
 }
 
 .hero-content {
@@ -255,7 +257,7 @@ code {
     z-index: 1;
     text-align: center;
     max-width: 720px;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 0.5rem;
     margin: 0 auto;
 }
 
@@ -468,14 +470,14 @@ code {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
 }
 
 .stat-card {
     background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 16px;
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
     border: 1px solid var(--border-glass);
     backdrop-filter: blur(10px);
     text-align: center;
@@ -496,18 +498,20 @@ code {
 }
 
 .stat-value {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--accent-primary);
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
 }
 
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
 }
 
 /* ========================================
@@ -515,37 +519,25 @@ code {
    ======================================== */
 .timeline {
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem 0 0;
+    display: grid;
+    gap: 1.5rem;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent-gradient);
-    transform: translateX(-50%);
+    display: none;
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-}
-
-.timeline-item:nth-child(odd) {
-    flex-direction: row;
-}
-
+.timeline-item,
+.timeline-item:nth-child(odd),
 .timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
+    position: relative;
+    margin-bottom: 0;
+    display: block;
 }
 
 .timeline-content {
-    width: 45%;
+    width: 100%;
     background: var(--bg-card);
     padding: 2rem;
     border-radius: 16px;
@@ -560,15 +552,7 @@ code {
 }
 
 .timeline-marker {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: var(--accent-primary);
-    border: 4px solid var(--bg-primary);
-    border-radius: 50%;
-    z-index: 1;
+    display: none;
 }
 
 .company-name {
@@ -951,10 +935,6 @@ code {
     transform: translateY(calc(100% - 45px));
 }
 
-.terminal.expanded {
-    height: 50vh;
-}
-
 .terminal-header {
     display: flex;
     justify-content: space-between;
@@ -1044,6 +1024,7 @@ code {
     background: rgba(0, 255, 0, 0.05);
     border-top: 1px solid var(--terminal-text);
     transition: background 0.3s ease;
+    gap: 0.5rem;
 }
 
 .terminal-input-container:focus-within {
@@ -1051,21 +1032,70 @@ code {
     box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.05);
 }
 
-.terminal-input {
+.terminal-input-wrap {
     flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: text;
+}
+
+.terminal-input {
+    width: 100%;
     background: transparent;
     border: none;
     color: var(--terminal-text);
     font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
+    font-size: 0.95rem;
     outline: none;
     caret-color: var(--terminal-text);
+    caret-shape: block;
 }
 
-.terminal-input::placeholder {
-    color: rgba(0, 255, 0, 0.4);
-    font-style: italic;
+.terminal-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.15em;
+    margin-left: 1px;
+    background: var(--terminal-text);
+    opacity: 0.95;
+    animation: terminal-blink 0.9s steps(1) infinite;
+    pointer-events: none;
+    vertical-align: middle;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(0, 255, 0, 0.5);
+}
+
+.terminal-input:not(:placeholder-shown) ~ .terminal-cursor {
+    display: none;
+}
+
+.terminal-input:focus:placeholder-shown ~ .terminal-cursor {
+    animation: terminal-blink 0.9s steps(1) infinite;
+}
+
+.terminal.minimized {
+    cursor: pointer;
+}
+
+.terminal.minimized:hover .terminal-header {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.terminal.minimized .terminal-header .terminal-title::after {
+    content: '';
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    margin-left: 0.4rem;
+    background: var(--terminal-text);
+    vertical-align: -0.1em;
+    animation: terminal-blink 1s steps(1) infinite;
+}
+
+@keyframes terminal-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
 }
 
 /* ========================================
@@ -1187,28 +1217,45 @@ code {
     }
     
     .section {
-        padding: 4rem 0;
+        padding: 3rem 0;
+    }
+
+    .about-section {
+        padding-top: 1.5rem;
     }
     
     .nav-container {
-        padding: 1rem;
+        padding: 0.75rem 1rem;
     }
     
     .nav-menu {
         display: none;
     }
+
+    .hero-section {
+        padding: 90px 0 0.5rem;
+    }
+
+    .hero-content {
+        padding: 1rem 0.5rem 0.25rem;
+    }
+
+    .hero-image-container {
+        width: 96px;
+        height: 96px;
+    }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     
     .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        align-items: center;
     }
     
     .stats-grid {
@@ -1225,10 +1272,6 @@ code {
     
     .terminal {
         height: 25vh;
-    }
-    
-    .terminal.expanded {
-        height: 40vh;
     }
     
     #particles-js {

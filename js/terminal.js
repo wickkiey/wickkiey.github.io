@@ -7,7 +7,6 @@ class Terminal {
         this.history = [];
         this.historyIndex = -1;
         this.isMinimized = false;
-        this.isExpanded = false;
         
         this.commands = {
             help: this.cmdHelp.bind(this),
@@ -54,24 +53,43 @@ class Terminal {
         
         // Terminal controls
         const minimizeBtn = document.getElementById('terminal-minimize');
-        const expandBtn = document.getElementById('terminal-expand');
         const toggleBtn = document.getElementById('terminal-toggle');
         
         if (minimizeBtn) {
             minimizeBtn.addEventListener('click', () => this.toggleMinimize());
         }
         
-        if (expandBtn) {
-            expandBtn.addEventListener('click', () => this.toggleExpand());
-        }
-        
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => this.toggleMinimize());
         }
         
-        // Focus input when clicking on terminal
+        const inputContainer = document.getElementById('terminal-input-container');
+
+        // Focus/open terminal when clicking
         if (this.terminal) {
-            this.terminal.addEventListener('click', () => this.focusInput());
+            this.terminal.addEventListener('click', (e) => {
+                if (e.target.closest('.terminal-btn')) return;
+                if (this.isMinimized) {
+                    this.isMinimized = false;
+                    this.terminal.classList.remove('minimized');
+                }
+                this.focusInput();
+            });
+        }
+
+        if (inputContainer) {
+            inputContainer.addEventListener('click', () => this.focusInput());
+        }
+
+        if (this.input) {
+            this.input.addEventListener('focus', () => {
+                if (this.terminal) this.terminal.classList.add('active');
+                this.scrollToBottom();
+            });
+            this.input.addEventListener('blur', () => {
+                if (this.terminal) this.terminal.classList.remove('active');
+            });
+            this.input.addEventListener('input', () => this.scrollToBottom());
         }
         
         // Keyboard shortcut Ctrl+`
@@ -158,25 +176,21 @@ class Terminal {
     }
     
     focusInput() {
-        if (this.input && !this.isMinimized) {
-            this.input.focus();
+        if (!this.input) return;
+        if (this.isMinimized) {
+            this.isMinimized = false;
+            this.terminal.classList.remove('minimized');
         }
+        this.input.focus();
     }
     
     toggleMinimize() {
         this.isMinimized = !this.isMinimized;
         this.terminal.classList.toggle('minimized');
-        if (!this.isMinimized) {
+        if (this.isMinimized) {
+            this.terminal.classList.remove('active');
+        } else {
             this.focusInput();
-        }
-    }
-    
-    toggleExpand() {
-        this.isExpanded = !this.isExpanded;
-        this.terminal.classList.toggle('expanded');
-        const icon = document.querySelector('#terminal-expand i');
-        if (icon) {
-            icon.className = this.isExpanded ? 'fas fa-compress' : 'fas fa-expand';
         }
     }
     

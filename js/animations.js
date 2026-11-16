@@ -237,65 +237,53 @@ class AnimationController {
     // Stat counter animation
     animateStats() {
         const stats = document.querySelectorAll('.stat-value');
-        
+
         stats.forEach(stat => {
-            const target = stat.textContent;
-            
+            const target = stat.textContent.trim();
+            if (stat.dataset.animated === 'true') return;
+
             // Skip animation for non-numeric values
-            if (!/\d/.test(target)) {
-                return;
-            }
+            if (!/\d/.test(target)) return;
 
             const hasPlus = target.includes('+');
             const hasDollar = target.includes('$');
             const hasPercent = target.includes('%');
-            
+            const hasK = target.includes('K');
+            const hasM = target.includes('M');
+
             let numericValue = parseFloat(target.replace(/[^0-9.]/g, ''));
-            
-            if (target.includes('K')) {
-                numericValue *= 1000;
-            } else if (target.includes('M')) {
-                numericValue *= 1000000;
-            }
-            
+            if (Number.isNaN(numericValue)) return;
+
+            if (hasK) numericValue *= 1000;
+            else if (hasM) numericValue *= 1000000;
+
+            const format = (current) => {
+                if (hasM) return '$' + (current / 1000000).toFixed(1) + 'M';
+                if (hasK) {
+                    const k = current / 1000;
+                    return (Number.isInteger(k) ? k.toFixed(0) : k.toFixed(1)) + 'K' + (hasPlus ? '+' : '');
+                }
+                if (hasDollar) return '$' + Math.round(current).toLocaleString();
+                if (hasPercent) return Math.round(current) + '%';
+                return Math.round(current).toString() + (hasPlus ? '+' : '');
+            };
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        gsap.from(stat, {
-                            textContent: 0,
-                            duration: 2,
-                            ease: 'power1.out',
-                            snap: { textContent: 0.1 },
-                            onUpdate: function() {
-                                let current = parseFloat(this.targets()[0].textContent);
-                                let formatted = current.toFixed(1);
-                                
-                                if (target.includes('K')) {
-                                    formatted = (current / 1000).toFixed(1) + 'K';
-                                } else if (target.includes('M')) {
-                                    formatted = '$' + (current / 1000000).toFixed(1) + 'M';
-                                } else if (hasPercent) {
-                                    formatted = current.toFixed(0) + '%';
-                                } else {
-                                    formatted = current.toFixed(0);
-                                }
-                                
-                                if (hasPlus && !hasDollar) {
-                                    formatted += '+';
-                                }
-                                
-                                stat.textContent = formatted;
-                            },
-                            scrollTrigger: {
-                                trigger: stat,
-                                start: 'top 80%'
-                            }
-                        });
-                        observer.unobserve(entry.target);
-                    }
+                    if (!entry.isIntersecting) return;
+                    stat.dataset.animated = 'true';
+                    const counter = { val: 0 };
+                    gsap.to(counter, {
+                        val: numericValue,
+                        duration: 1.6,
+                        ease: 'power1.out',
+                        onUpdate: () => { stat.textContent = format(counter.val); },
+                        onComplete: () => { stat.textContent = target; }
+                    });
+                    observer.unobserve(stat);
                 });
-            });
-            
+            }, { threshold: 0.3 });
+
             observer.observe(stat);
         });
     }
